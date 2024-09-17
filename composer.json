@@ -1,8 +1,8 @@
 {
-    "name": "risetech/address",
+    "name": "risetechapps/address",
     "description": "",
     "keywords": [
-        "risetech",
+        "risetechapps",
         "address"
     ],
     "homepage": "https://github.com/risetech/address",
@@ -54,7 +54,6 @@
             }
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "version": "1.0"
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
