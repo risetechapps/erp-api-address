@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use RiseTech\FormRequest\Services\ServicesForm;
 
-class AddressResource extends JsonResource
+class AddressDeliveryResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
+            "full_address" => $this->full_address,
             "id" => $this->id,
             "zip_code" => $this->zip_code,
             "country" => $this->country,

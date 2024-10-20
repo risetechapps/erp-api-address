@@ -4,8 +4,11 @@ namespace RiseTech\Address;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use RiseTech\Address\Events\Address\AddressCreateOrUpdateEvent;
-use RiseTech\Address\Listeners\AddressCreateOrUpdateListener;
+
+use RiseTech\Address\Events\Address\AddressCreateOrUpdateBillingEvent;
+use RiseTech\Address\Events\Address\AddressCreateOrUpdateDefaultEvent;
+use RiseTech\Address\Events\Address\AddressCreateOrUpdateDeliveryEvent;
+use RiseTech\Address\Listeners;
 
 class AddressServiceProvider extends ServiceProvider
 {
@@ -16,7 +19,9 @@ class AddressServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        Event::listen(AddressCreateOrUpdateEvent::class, AddressCreateOrUpdateListener::class);
+        Event::listen(AddressCreateOrUpdateDefaultEvent::class, Listeners\AddressCreateOrUpdateDefaultListener::class);
+        Event::listen(AddressCreateOrUpdateDeliveryEvent::class, Listeners\AddressCreateOrUpdateDeliveryListener::class);
+        Event::listen(AddressCreateOrUpdateBillingEvent::class, Listeners\AddressCreateOrUpdateBillingListener::class);
     }
 
     /**

@@ -29,6 +29,7 @@ class Address extends Model
         'address',
         'number',
         'complement',
+        'type'
     ];
 
     /**
@@ -37,7 +38,8 @@ class Address extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-        'address_type'
+        'address_type',
+        'address_id'
     ];
 
     /**
@@ -47,4 +49,20 @@ class Address extends Model
      */
     protected $casts = [
     ];
+
+    protected $appends = ['full_address'];
+
+    public function getFullAddressAttribute()
+    {
+        $parts = [
+            $this->address,
+            $this->number ? ', ' . $this->number : '',
+            $this->complement ? ' - ' . $this->complement : '',
+            $this->district ? ', ' . $this->district : '',
+            $this->city ? ', ' . $this->city : '',
+            $this->state ? ' - ' . $this->state : '',
+            $this->zip_code ? ' - CEP: ' . $this->zip_code : '',
+        ];
+        return implode('', array_filter($parts));
+    }
 }
