@@ -20,8 +20,11 @@ class AddressCreateOrUpdateListener
 
             $created = !is_null($event->model->address);
 
-            if ($event->request->has('address')) {
+
+            if($event->request->has('address')){
                 $address = $event->request->input('address');
+            }else if($event->request->has('person.address')){
+                $address = $event->request->input('person.address');
             }else{
                 if(!empty(\RiseTech\Address\Address::getAddress())){
                     $address = \RiseTech\Address\Address::getAddress();
