@@ -21,7 +21,8 @@ class AddressResource extends JsonResource
             "number" => $this->number,
             "complement" => $this->complement,
             "country_description" => $this->getCountryDescription(),
-            "state_description" => $this->getStateDescription()
+            "state_description" => $this->getStateDescription(),
+            'deleted' => !is_null($this->deleted_at),
         ];
     }
 
