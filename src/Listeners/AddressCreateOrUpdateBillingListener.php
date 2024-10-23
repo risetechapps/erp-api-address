@@ -20,6 +20,10 @@ class AddressCreateOrUpdateBillingListener
             $BillingAddresses = $event->request->input('address_billing', []);
 
 
+            if(!is_null($event->model->getOriginal('deleted_at'))){
+                return;
+            }
+            
             if ($created) {
                 $event->model->addressBilling()->delete();
             }

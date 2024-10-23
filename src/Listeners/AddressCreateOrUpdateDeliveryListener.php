@@ -18,6 +18,10 @@ class AddressCreateOrUpdateDeliveryListener
             $created = !is_null($event->model->address);
             $chargeAddresses = $event->request->input('address_delivery', []);
 
+            if(!is_null($event->model->getOriginal('deleted_at'))){
+                return;
+            }
+            
 
             if ($created) {
                 $event->model->addressDelivery()->delete();

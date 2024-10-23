@@ -18,6 +18,10 @@ class AddressCreateOrUpdateDefaultListener
 
             $address = [];
 
+            if(!is_null($event->model->getOriginal('deleted_at'))){
+                return;
+            }
+            
             $created = !is_null($event->model->address);
 
             if ($event->request->has('address')) {
