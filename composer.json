@@ -18,9 +18,9 @@
     "require": {
         "php": "^8.1",
         "illuminate/support": "^9.0|^10.0",
-        "risetechapps/erp-api-form-request": "^3.0.1",
-        "risetechapps/erp-api-repository": "^2.0.8",
-        "risetechapps/erp-api-to-upper": "^1.1"
+        "risetechapps/erp-api-form-request": "^1.0",
+        "risetechapps/erp-api-repository": "^1.0",
+        "risetechapps/erp-api-to-upper": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0|^8.0",
